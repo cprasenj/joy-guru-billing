@@ -1,0 +1,72 @@
+link#bootstrap-css(href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css', rel='stylesheet')
+script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js')
+link(src='../public/stylesheets/style.css', rel='stylesheet')
+script(src='//code.jquery.com/jquery-1.11.1.min.js')
+
+.container
+  .row
+    .col-xs-12
+      .invoice-title
+        .col-xs-6(style='')
+          h5(style='font-weight:bold;font-style: italic;') phone No. #{summary.phone}
+        .col-xs-6.text-right
+          h5(style='font-weight:bold;font-style: italic;') Mob No. #{summary.mobile}
+      .h1.text-center JOY GURU WATER SUPPLY & SERVICE CENTER
+      .h3.text-center General Order Suppliers
+      .col-xs-4
+        h4.text-left PAHARPUR
+      .col-xs-4
+        h4.text-center KRISHNANAGAR
+      .col-xs-4
+        h4.text-right BANKURA
+      hr(style='width:100%;border: 1px solid')
+    .col-xs-12
+      .col-xs-6(style='')
+        h5(style='font-weight:bold;font-style: italic;text-decoration: underline dotted') Ref No:- #{summary.refNo}
+      .col-xs-6.text-right
+        h5(style='font-weight:bold;font-style: italic;text-decoration: underline dotted') Date:- #{summary.date}
+      .col-xs-4
+        .p(style='font-style: italic;text-decoration: underline') #{summary.billInfo.headerText}
+        .p(style='font-style: italic;text-decoration: underline') #{summary.billInfo.contractorName}
+        .p(style='font-style: italic;text-decoration: underline') #{summary.billInfo.place}
+  .row
+    .p.text-center(style='font-weight:bold;font-style: italic;text-decoration: underline') sub:- #{summary.billInfo.subject}
+  .row
+    .h4.text-center(style='font-weight:bold;text-decoration:underline') BILL
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-condensed
+              thead
+                tr
+                  td
+                    strong SL NO.
+                  td.text-center
+                    strong MONTH
+                  td.text-center
+                    strong TANKER NO.
+                  td.text-center
+                    strong TOTAL TRIPS
+                  td.text-center
+                    strong PER TRIP CAPACITY (M.T.)
+                  td.text-center
+                    strong PER AMOUNT (Rs.)
+                  td.text-center
+              tbody
+                each s in summary
+                  tr
+                    td.text-center #{s.serialNo}
+                    td.text-center #{summary.month}
+                    td.text-center #{s.vehicleNo}
+                    td.text-center #{s.totalTrips}
+                    td.text-center #{s.perTripCapacity}
+                    td.text-center #{s.amount}
+                tr(style='background:#D3D3D3')
+                  td
+                  td
+                  td.text-center TOTAL TRIPS
+                  td.text-center #{summary.totalTrips}
+                  td.text-center TOTAL RUPEES
+                  td.text-center #{summary.totalAmount}

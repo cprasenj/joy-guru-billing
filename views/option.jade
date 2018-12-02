@@ -1,0 +1,13 @@
+form(method='POST', action='/invoice')
+  .form-row
+    select(name='companyId', required='')
+      option(selected disabled) Select a company
+      each c in companies
+        option(value=c.id) #{c.fields.Name}
+  .form-row
+    span from:
+      input(type='date', name='fromDate')
+  .form-row
+    span to:
+      input(type='date', name='toDate')
+  input(type='submit', value='Generate Invoice')
